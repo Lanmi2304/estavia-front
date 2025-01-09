@@ -3,6 +3,5 @@ export async function getSession() {
     credentials: "include",
     mode: "cors",
   });
-  //   console.log(session);
   return session;
 }
