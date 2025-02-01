@@ -14,7 +14,6 @@ import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/input-password";
 import { authClient } from "@/lib/auth-client";
 
-// import { authClient } from '@/lib/utils/auth-client'
 import { cn } from "@/lib/utils/cn";
 
 import { useRouter } from "next/navigation";
@@ -47,7 +46,7 @@ export function SignInForm({ className }: ComponentProps<"form">) {
             router.push("/dashboard");
           },
           onError: (ctx) => {
-            console.error("123", ctx.error);
+            console.error(ctx.error.message);
             toast.error(ctx.error.message);
           },
         }
