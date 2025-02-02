@@ -1,16 +1,24 @@
-'use client'
+import { auth } from '@/auth'
+import { headers } from 'next/headers'
 
-import { authClient } from '@/lib/auth-client'
+export default async function Dashboard() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
 
-export default function Dashboard() {
-  const { data, isPending } = authClient.useSession()
+  const response = await fetch(
+    `http://localhost:3000/available-leads?userId=${session?.user.id}`,
+  )
+  const data = await response.json()
+  console.log(data)
 
-  if (!data?.session) {
-    return <div>{isPending ? 'loading...' : 'Not authorized'}</div>
-  }
+  if (!session) return <div>Not Authorized</div>
+
   return (
     <div>
-      <p>{isPending ? 'loading...' : `${data.user.name}`}</p>
+      <h1>Dashboard - {session.user.name}</h1>
+
+      <h2>Available apartments</h2>
     </div>
   )
 }
