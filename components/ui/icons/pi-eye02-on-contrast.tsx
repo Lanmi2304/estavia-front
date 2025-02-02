@@ -1,4 +1,4 @@
-import type React from "react";
+import type React from 'react'
 
 export function PiEye02OnContrast(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -26,5 +26,5 @@ export function PiEye02OnContrast(props: React.SVGProps<SVGSVGElement>) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }

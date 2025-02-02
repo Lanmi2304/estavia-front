@@ -1,28 +1,28 @@
-import { Slot } from "@radix-ui/react-slot";
-import { type VariantProps, cva } from "class-variance-authority";
-import * as React from "react";
+import { Slot } from '@radix-ui/react-slot'
+import { type VariantProps, cva } from 'class-variance-authority'
+import * as React from 'react'
 
-import { cn } from "@/lib/utils/cn";
+import { cn } from '@/lib/utils/cn'
 
-const spinnerVariants = cva("relative block opacity-65", {
+const spinnerVariants = cva('relative block opacity-65', {
   variants: {
     size: {
-      sm: "size-4",
-      md: "size-6",
-      lg: "size-8",
+      sm: 'size-4',
+      md: 'size-6',
+      lg: 'size-8',
     },
   },
   defaultVariants: {
-    size: "sm",
+    size: 'sm',
   },
-});
+})
 
 export interface SpinnerProps
   extends React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof spinnerVariants> {
-  loading?: boolean;
-  asChild?: boolean;
-  inverted?: boolean;
+  loading?: boolean
+  asChild?: boolean
+  inverted?: boolean
 }
 
 const Spinner = React.forwardRef<HTMLSpanElement, SpinnerProps>(
@@ -35,11 +35,11 @@ const Spinner = React.forwardRef<HTMLSpanElement, SpinnerProps>(
       asChild = false,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const Comp = asChild ? Slot : "span";
+    const Comp = asChild ? Slot : 'span'
 
-    if (!loading) return null;
+    if (!loading) return null
 
     return (
       <Comp
@@ -58,17 +58,17 @@ const Spinner = React.forwardRef<HTMLSpanElement, SpinnerProps>(
           >
             <span
               className={cn(
-                "block h-[30%] w-full rounded-full",
-                inverted ? "bg-foreground" : "bg-white"
+                'block h-[30%] w-full rounded-full',
+                inverted ? 'bg-foreground' : 'bg-white',
               )}
             />
           </span>
         ))}
       </Comp>
-    );
-  }
-);
+    )
+  },
+)
 
-Spinner.displayName = "Spinner";
+Spinner.displayName = 'Spinner'
 
-export { Spinner, spinnerVariants };
+export { Spinner, spinnerVariants }

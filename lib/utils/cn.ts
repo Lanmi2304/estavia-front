@@ -1,5 +1,5 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 /**
  * A function that combines multiple class values
@@ -8,4 +8,4 @@ import { twMerge } from "tailwind-merge";
  * @param inputs - An array of class values to be merged.
  * @returns A string of merged class names.
  */
-export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))

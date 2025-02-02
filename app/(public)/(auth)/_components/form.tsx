@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -9,30 +9,30 @@ import {
   FormLabel,
   FormMessage,
   useForm,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { PasswordInput } from "@/components/ui/input-password";
-import { authClient } from "@/lib/auth-client";
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { PasswordInput } from '@/components/ui/input-password'
+import { authClient } from '@/lib/auth-client'
 
-import { cn } from "@/lib/utils/cn";
+import { cn } from '@/lib/utils/cn'
 
-import { useRouter } from "next/navigation";
-import { type ComponentProps, useTransition } from "react";
-import { toast } from "sonner";
-import { SignInInput, signInSchema } from "../_schemas/sign-in.schemas";
+import { useRouter } from 'next/navigation'
+import { type ComponentProps, useTransition } from 'react'
+import { toast } from 'sonner'
+import { type SignInInput, signInSchema } from '../_schemas/sign-in.schemas'
 
-export function SignInForm({ className }: ComponentProps<"form">) {
-  const [isPending, startTransition] = useTransition();
+export function SignInForm({ className }: ComponentProps<'form'>) {
+  const [isPending, startTransition] = useTransition()
 
-  const router = useRouter();
+  const router = useRouter()
 
   const form = useForm({
     schema: signInSchema,
     defaultValues: {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
     },
-  });
+  })
 
   const onSubmit = (values: SignInInput) => {
     startTransition(async () => {
@@ -43,22 +43,22 @@ export function SignInForm({ className }: ComponentProps<"form">) {
         },
         {
           onSuccess: () => {
-            router.push("/dashboard");
+            router.push('/dashboard')
           },
           onError: (ctx) => {
-            console.error(ctx.error.message);
-            toast.error(ctx.error.message);
+            console.error(ctx.error.message)
+            toast.error(ctx.error.message)
           },
-        }
-      );
-    });
-  };
+        },
+      )
+    })
+  }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("space-y-4 w-full", className)}
+        className={cn('w-full space-y-4', className)}
       >
         <div className="space-y-2">
           <FormField
@@ -115,5 +115,5 @@ export function SignInForm({ className }: ComponentProps<"form">) {
         </Button>
       </form>
     </Form>
-  );
+  )
 }

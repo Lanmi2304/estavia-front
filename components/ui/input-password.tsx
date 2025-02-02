@@ -1,25 +1,25 @@
-"use client";
+'use client'
 
-import { forwardRef, useState } from "react";
+import { forwardRef, useState } from 'react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 
-import { cn } from "@/lib/utils/cn";
-import { Input, InputProps } from "./input";
-import { PiEye02OnContrast } from "./icons/pi-eye02-on-contrast";
-import { PiEye02OffContrast } from "./icons/pi-eye02-off-contrast";
+import { cn } from '@/lib/utils/cn'
+import { PiEye02OffContrast } from './icons/pi-eye02-off-contrast'
+import { PiEye02OnContrast } from './icons/pi-eye02-on-contrast'
+import { Input, type InputProps } from './input'
 
 const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => {
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false)
     const disabled =
-      props.value === "" || props.value === undefined || props.disabled;
+      props.value === '' || props.value === undefined || props.disabled
 
     return (
       <div className="relative">
         <Input
-          type={showPassword ? "text" : "password"}
-          className={cn("hide-password-toggle pr-10", className)}
+          type={showPassword ? 'text' : 'password'}
+          className={cn('hide-password-toggle pr-10', className)}
           ref={ref}
           {...props}
         />
@@ -37,7 +37,7 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
             <PiEye02OffContrast className="size-4" aria-hidden="true" />
           )}
           <span className="sr-only">
-            {showPassword ? "Hide password" : "Show password"}
+            {showPassword ? 'Hide password' : 'Show password'}
           </span>
         </Button>
 
@@ -51,9 +51,9 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
 					}
 				`}</style>
       </div>
-    );
-  }
-);
-PasswordInput.displayName = "PasswordInput";
+    )
+  },
+)
+PasswordInput.displayName = 'PasswordInput'
 
-export { PasswordInput };
+export { PasswordInput }
